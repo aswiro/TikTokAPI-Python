@@ -51,7 +51,9 @@ class TikTokBrowser:
         self.tiktok_dummy_page = "file://" + os.path.join(parent_folder, "website", "tiktok.html")
 
     def fetch_auth_params(self, url, language='en'):
-        return asyncio.get_event_loop().run_until_complete(self.async_fetch_auth_params(url, language))
+        return asyncio.new_event_loop().run_until_complete(self.async_fetch_auth_params(url, language))
+        # return asyncio.get_event_loop().run_until_complete(self.async_fetch_auth_params(url, language))
+
 
     async def async_fetch_auth_params(self, url, language):
         browser = await launch(self.options)
